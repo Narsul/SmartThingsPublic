@@ -7,7 +7,7 @@
  */
 definition(
     name: "Music Control",
-    namespace: "obycode",
+    namespace: "com.obycode",
     author: "obycode",
     description: "Play or pause your music when certain actions take place in your home.",
     category: "SmartThings Labs",
@@ -303,4 +303,3 @@ private timeIntervalLabel()
     (starting && ending) ? hhmm(starting) + "-" + hhmm(ending, "h:mm a z") : ""
 }
 // TODO - End Centralize
-

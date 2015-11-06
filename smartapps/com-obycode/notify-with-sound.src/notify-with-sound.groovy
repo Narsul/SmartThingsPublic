@@ -8,7 +8,7 @@
 import groovy.json.JsonSlurper
 
 definition(
-    name: "ObyThing Notify with Sound",
+    name: "Notify with Sound",
     namespace: "com.obycode",
     author: "obycode, based on 'Sonos Notify with Sound' by SmartThings",
     description: "Play a sound or custom message through your Mac with ObyThing when the mode changes or other events occur.",
