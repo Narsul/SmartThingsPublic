@@ -4,13 +4,10 @@
  *  switches, push notification and text message. Alarm is armed and disarmed
  *  simply by setting SmartThings location 'mode'.
  *
- *  Please visit <http://statusbits.github.io/smartalarm/> for more
- *  information.
+ *  Please visit <https://github.com/statusbits/smartthings/blob/master/SmartAlarm.md>
+ *  for more information.
  *
  *  Version 2.4.3 (7/7/2015)
- *
- *  The latest version of this file can be found on GitHub at:
- *  <https://github.com/statusbits/smartalarm/blob/master/SmartAlarm.groovy>
  *
  *  --------------------------------------------------------------------------
  *
