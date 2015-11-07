@@ -16,13 +16,15 @@
  */
 
 definition(
-    name: "Voice Notifications",
-    namespace: "narsul",
-    author: "Anthony Hell",
-    description: "Say custom message when the mode changes or other events occur.",
-    category: "SmartThings Labs",
-    iconUrl: "http://solutionsetcetera.com/stuff/STIcons/HB.png",
-    iconX2Url: "http://solutionsetcetera.com/stuff/STIcons/HB@2x.png")
+  name: "Voice Notifications",
+  namespace: "narsul",
+  author: "Anthony Hell",
+  description: "Say custom message when the mode changes or other events occur.",
+  category: "SmartThings Labs",
+  iconUrl: "https://raw.githubusercontent.com/Narsul/SmartThingsPublic/master/smartapps/narsul/voice-notifications.src/icon.png",
+  iconX2Url: "https://raw.githubusercontent.com/Narsul/SmartThingsPublic/master/smartapps/narsul/voice-notifications.src/icon@2x.png",
+  iconX2Url: "https://raw.githubusercontent.com/Narsul/SmartThingsPublic/master/smartapps/narsul/voice-notifications.src/icon@3x.png"
+)
 
 preferences {
   page(name: "mainPage", title: "Play a message over your speakers when something happens", install: true, uninstall: true)
