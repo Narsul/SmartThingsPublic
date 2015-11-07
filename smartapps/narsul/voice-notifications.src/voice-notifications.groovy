@@ -21,9 +21,9 @@ definition(
   author: "Anthony Hell",
   description: "Say custom message when the mode changes or other events occur.",
   category: "SmartThings Labs",
-  iconUrl: "https://raw.githubusercontent.com/Narsul/SmartThingsPublic/master/smartapps/narsul/voice-notifications.src/icon.png",
-  iconX2Url: "https://raw.githubusercontent.com/Narsul/SmartThingsPublic/master/smartapps/narsul/voice-notifications.src/icon@2x.png",
-  iconX2Url: "https://raw.githubusercontent.com/Narsul/SmartThingsPublic/master/smartapps/narsul/voice-notifications.src/icon@3x.png"
+  iconUrl: "http://i.imgur.com/xdH7vDS.png",
+  iconX2Url: "http://i.imgur.com/flQSQjp.png",
+  iconX3Url: "http://i.imgur.com/2h4qpTb.png"
 )
 
 preferences {
