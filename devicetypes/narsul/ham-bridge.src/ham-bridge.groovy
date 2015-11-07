@@ -17,6 +17,9 @@
 metadata {
   definition (name: "HAM Bridge", namespace: "Narsul", author: "Anthony Hell") {
     capability "Speech Synthesis"
+
+    // sendCommand(String commandName, String param1, String param2)
+    command "sendCommand", ["string", "string", "string"]
   }
 
   simulator {
@@ -39,13 +42,13 @@ def parse(String description) {
 }
 
 // handle commands
-def sendCommand(command) {
-  log.trace "sendCommand(${command})"
+def sendCommand(command, param1=null, param2=null) {
+  log.trace "sendCommand(${command}, ${param1}, ${param2})"
 
-  def encodedCommand = []
-    for (def i = 0; i <command.size; i++) {
-      encodedCommand.add(URLEncoder.encode(command[i], "UTF-8").replaceAll("\\+", "%20"))
-    }
+  // encode command parts for sending it via HTTP GET request
+  def encodedCommand = [urlEncode(command)]
+  if (param1 != null) encodedCommand.add(urlEncode(param1))
+  if (param2 != null) encodedCommand.add(urlEncode(param2))
   encodedCommand = encodedCommand.join('&')
   def path = "/?${encodedCommand}"
 
@@ -65,7 +68,7 @@ def sendCommand(command) {
 def speak(text) {
   log.trace "speak(${text})"
 
-  sendCommand(['say_text', text])
+  sendCommand('say_text', text)
 }
 
 // Private functions used internally
@@ -75,6 +78,10 @@ private Integer convertHexToInt(hex) {
 
 private String convertHexToIP(hex) {
   [convertHexToInt(hex[0..1]),convertHexToInt(hex[2..3]),convertHexToInt(hex[4..5]),convertHexToInt(hex[6..7])].join(".")
+}
+
+private String urlEncode(text) {
+  URLEncoder.encode(text, "UTF-8").replaceAll("\\+", "%20")
 }
 
 private getHostAddress() {
