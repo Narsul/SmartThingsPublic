@@ -15,40 +15,39 @@
  */
 
 metadata {
-	definition (name: "HAM Bridge", namespace: "Narsul", author: "Anthony Hell") {
-	  capability "Speech Synthesis"
-	}
+  definition (name: "HAM Bridge", namespace: "Narsul", author: "Anthony Hell") {
+    capability "Speech Synthesis"
+  }
 
-	simulator {
-		// TODO: define status and reply messages here
-	}
+  simulator {
+    // TODO: define status and reply messages here
+  }
 
-	tiles {
+  tiles {
     valueTile("state", "device.state", decoration: "flat") {
-		  state "state", label:"${currentValue}"
-		}
+      state "state", label:"${currentValue}"
+    }
 
-	  main "state"
+    main "state"
     details(["state"])
-	}
+  }
 }
 
 // parse events into attributes
 def parse(String description) {
-	log.debug "Parsing '${description}'"
-
+  log.debug "Parsing '${description}'"
 }
 
 // handle commands
 def sendCommand(command) {
-	log.trace "sendCommand(${command})"
+  log.trace "sendCommand(${command})"
 
-	def encodedCommand = []
+  def encodedCommand = []
     for (def i = 0; i <command.size; i++) {
-	    encodedCommand.add(URLEncoder.encode(command[i], "UTF-8").replaceAll("\\+", "%20"))
+      encodedCommand.add(URLEncoder.encode(command[i], "UTF-8").replaceAll("\\+", "%20"))
     }
-	encodedCommand = encodedCommand.join('&')
-	def path = "/?${encodedCommand}"
+  encodedCommand = encodedCommand.join('&')
+  def path = "/?${encodedCommand}"
 
   def headers = [:]
   headers.put("HOST", getHostAddress())
@@ -64,9 +63,9 @@ def sendCommand(command) {
 }
 
 def speak(text) {
-	log.trace "speak(${text})"
+  log.trace "speak(${text})"
 
-	sendCommand(['say_text', text])
+  sendCommand(['say_text', text])
 }
 
 // Private functions used internally
