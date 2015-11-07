@@ -15,7 +15,7 @@
  */
 
 metadata {
-  definition (name: "HAM Bridge", namespace: "Narsul", author: "Anthony Hell") {
+  definition (name: "HAM Bridge", namespace: "narsul", author: "Anthony Hell") {
     capability "Speech Synthesis"
 
     // sendCommand(String commandName, String param1, String param2)
