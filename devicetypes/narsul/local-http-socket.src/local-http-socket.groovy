@@ -1,12 +1,12 @@
 /**
- *  Local HTTP Switch
+ *  Local HTTP Socket
  *
  *  Author: Anthony Hell
  */
 // for the UI
 metadata {
 	// Automatically generated. Make future change here.
-	definition (name: "Local HTTP Switch", namespace: "narsul", author: "Anthony Hell") {
+	definition (name: "Local HTTP Socket", namespace: "narsul", author: "Anthony Hell") {
 		capability "Switch"
 		capability "Polling"
 		capability "Refresh"
@@ -19,10 +19,10 @@ metadata {
 	tiles (scale: 2){
 		multiAttributeTile(name:"switch", type: "lighting", width: 6, height: 4, canChangeIcon: true){
 			tileAttribute ("device.switch", key: "PRIMARY_CONTROL") {
-				attributeState "on", label:'${name}', action:"switch.off", icon:"st.Lighting.light13", backgroundColor:"#79b821", nextState:"turningOff"
-				attributeState "off", label:'${name}', action:"switch.on", icon:"st.Lighting.light13", backgroundColor:"#ffffff", nextState:"turningOn"
-				attributeState "turningOn", label:'${name}', action:"switch.off", icon:"st.Lighting.light13", backgroundColor:"#79b821", nextState:"turningOff"
-				attributeState "turningOff", label:'${name}', action:"switch.on", icon:"st.Lighting.light13", backgroundColor:"#ffffff", nextState:"turningOn"
+				attributeState "on", label:'${name}', action:"switch.off", icon:"st.Appliances.appliances17", backgroundColor:"#79b821", nextState:"turningOff"
+				attributeState "off", label:'${name}', action:"switch.on", icon:"st.Appliances.appliances17", backgroundColor:"#ffffff", nextState:"turningOn"
+				attributeState "turningOn", label:'${name}', action:"switch.off", icon:"st.Appliances.appliances17", backgroundColor:"#79b821", nextState:"turningOff"
+				attributeState "turningOff", label:'${name}', action:"switch.on", icon:"st.Appliances.appliances17", backgroundColor:"#ffffff", nextState:"turningOn"
 			}
 		}
 
@@ -42,19 +42,19 @@ def parse(description) {
 
 // handle commands
 def on() {
-	log.trace parent.switchOn(this)
+	log.trace parent.socketOn(this)
 	sendEvent(name: "switch", value: "on")
 }
 
 def off() {
-	log.trace parent.switchOff(this)
+	log.trace parent.socketOff(this)
 	sendEvent(name: "switch", value: "off")
 }
 
 def poll() {
-	parent.switchPoll(this)
+	parent.socketPoll(this)
 }
 
 def refresh() {
-	parent.switchPoll(this)
+	parent.socketPoll(this)
 }
