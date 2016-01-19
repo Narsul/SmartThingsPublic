@@ -535,6 +535,11 @@ private String convertHexToIP(hex) {
 //CHILD DEVICE METHODS
 /////////////////////////////////////
 
+// parse events into attributes
+def parse(childDevice, description) {
+	log.debug "parse() - $description"
+}
+
 // switch methods
 
 def switchOn(childDevice) {
