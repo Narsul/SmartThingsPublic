@@ -1,6 +1,6 @@
 /**
  *  Send HAM Bridge Command When…
- *  
+ *
  *  For more information about HAM Bridge please visit http://solutionsetcetera.com/HAMBridge/
  *
  *  Copyright 2014 Scottin Pollock
@@ -77,8 +77,16 @@ def eventHandler(evt) {
 	sendHttp()
 }
 
+def locationHandler(evt) {
+  def description = evt.description
+
+  def stHub = evt?.hubId
+  def parsedEvent = parseLanMessage(description)
+  parsedEvent << ["hub":stHub]
+}
+
 def sendHttp() {
-def ip = "${settings.server}:${settings.port}"
-def deviceNetworkId = "1234"
-sendHubCommand(new physicalgraph.device.HubAction("""GET /?${settings.HAMBcommand} HTTP/1.1\r\nHOST: $ip\r\n\r\n""", physicalgraph.device.Protocol.LAN, "${deviceNetworkId}"))
+  def ip = "${settings.server}:${settings.port}"
+  def deviceNetworkId = "1234"
+  sendHubCommand(new physicalgraph.device.HubAction("""GET /?${settings.HAMBcommand} HTTP/1.1\r\nHOST: $ip\r\n\r\n""", physicalgraph.device.Protocol.LAN, "${deviceNetworkId}"))
 }
